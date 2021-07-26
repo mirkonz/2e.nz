@@ -1,8 +1,6 @@
 <template>
 <div class="min-h-screen flex justify-center items-center  bg-gradient-to-b from-gray-500 to-gray-100">
-
-
-    <svg viewBox="0 0 165 160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" class="h-40">
+    <svg viewBox="0 0 165 160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" class="h-32 md:h-40">
       <g transform="matrix(0.998597,0,0,1,-0.93129,-0.266394)">
           <rect x="0.933" y="0.266" width="165.232" height="159.975"/>
       </g>
@@ -23,7 +21,7 @@
       </g>
     </svg>
 
-    <div class="ml-6 text-7xl font-medium">
+    <div class="ml-6 text-5xl md:text-7xl font-medium">
       Digital<br>
       Works
     </div>
