@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="2e Digital Works">
+    <link rel="icon" href="/favicon.ico">
+    <title>2e | Digital Works</title>
+    <style>
+      :root {
+        font-family: Arial, sans-serif;
+        color: #111827;
+        background: #f3f4f6;
+      }
+
+      * { box-sizing: border-box; }
+      body { margin: 0; }
+
+      main {
+        display: flex;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(1.25rem, 4vw, 2rem);
+        padding: 1.5rem;
+        background: linear-gradient(to bottom, #6b7280, #f3f4f6);
+      }
+
+      img { width: clamp(8rem, 22vw, 10rem); height: auto; }
+      h1 { margin: 0; font-size: clamp(3rem, 10vw, 5rem); font-weight: 500; line-height: .9; letter-spacing: -.06em; }
+
+      @media (max-width: 480px) {
+        main { flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <img src="/2e.svg" alt="2e">
+      <h1>Digital<br>Works</h1>
+    </main>
+  </body>
+</html>

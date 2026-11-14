@@ -1,0 +1,6 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "2e-nz",
+  "assets": { "directory": "./dist" },
+  "compatibility_date": "2025-08-19"
+}
