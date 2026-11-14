@@ -1,9 +1,11 @@
 {
-  "name": "2e",
+  "name": "2E",
   "version": "2.0.0",
   "private": true,
   "packageManager": "pnpm@12.18.0",
-  "engines": { "node": "^20.19.0 || >=22.12.0" },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",

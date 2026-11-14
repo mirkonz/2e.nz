@@ -1,6 +1,6 @@
-# 2e
+# 2E
 
-One static landing page for 2e Digital Works. Vite is used only to produce a
+One static landing page for 2E Digital Works. Vite is used only to produce a
 static build; there is no server runtime, CMS, or admin interface.
 
 ```sh
