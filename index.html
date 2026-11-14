@@ -9,25 +9,43 @@
     <style>
       :root {
         font-family: Arial, sans-serif;
-        color: #111827;
-        background: #f3f4f6;
+        color: #202832;
+        background: #dce3e7;
       }
 
       * { box-sizing: border-box; }
       body { margin: 0; }
 
       main {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
         display: flex;
         min-height: 100vh;
         align-items: center;
         justify-content: center;
         gap: clamp(1.25rem, 4vw, 2rem);
         padding: 1.5rem;
-        background: linear-gradient(to bottom, #6b7280, #f3f4f6);
+        background:
+          radial-gradient(ellipse at 18% 8%, #c9d6dc 0%, transparent 46%),
+          radial-gradient(ellipse at 85% 90%, #d4dcd7 0%, transparent 48%),
+          linear-gradient(145deg, #aebdc5, #e7ebeb 55%, #c9d4d5);
       }
 
-      img { width: clamp(8rem, 22vw, 10rem); height: auto; }
-      h1 { margin: 0; font-size: clamp(3rem, 10vw, 5rem); font-weight: 500; line-height: .9; letter-spacing: -.06em; }
+      main::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0;
+        background: radial-gradient(500px circle at var(--pointer-x, 50%) var(--pointer-y, 50%), rgb(255 255 255 / 55%), transparent 70%);
+        transition: opacity 400ms ease;
+      }
+
+      main.is-following::before { opacity: 1; }
+      img { width: clamp(8rem, 22vw, 10rem); height: auto; filter: drop-shadow(0 16px 24px rgb(30 43 48 / 18%)); }
+      h1 { margin: 0; font-size: clamp(3rem, 10vw, 5rem); font-weight: 500; line-height: .9; letter-spacing: -.06em; text-shadow: 0 2px 20px rgb(255 255 255 / 30%); }
 
       @media (max-width: 480px) {
         main { flex-direction: column; }
@@ -39,5 +57,19 @@
       <img src="/2e.svg" alt="2e">
       <h1>Digital<br>Works</h1>
     </main>
+    <script>
+      const main = document.querySelector('main')
+      const motion = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)')
+
+      main.addEventListener('pointermove', (event) => {
+        if (!motion.matches || event.pointerType === 'touch') return
+        const bounds = main.getBoundingClientRect()
+        main.style.setProperty('--pointer-x', `${event.clientX - bounds.left}px`)
+        main.style.setProperty('--pointer-y', `${event.clientY - bounds.top}px`)
+        main.classList.add('is-following')
+      })
+      main.addEventListener('pointerleave', () => main.classList.remove('is-following'))
+      motion.addEventListener('change', () => main.classList.remove('is-following'))
+    </script>
   </body>
 </html>
