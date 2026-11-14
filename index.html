@@ -9,8 +9,17 @@
     <style>
       :root {
         font-family: Arial, sans-serif;
+        color-scheme: light dark;
         color: #202832;
         background: #dce3e7;
+        --background-start: #c9d6dc;
+        --background-end: #d4dcd7;
+        --background-base: #aebdc5;
+        --background-mid: #e7ebeb;
+        --background-finish: #c9d4d5;
+        --pointer-glow: rgb(255 255 255 / 55%);
+        --heading-shadow: rgb(255 255 255 / 30%);
+        --logo-shadow: rgb(30 43 48 / 18%);
       }
 
       * { box-sizing: border-box; }
@@ -27,9 +36,9 @@
         gap: clamp(1.25rem, 4vw, 2rem);
         padding: 1.5rem;
         background:
-          radial-gradient(ellipse at 18% 8%, #c9d6dc 0%, transparent 46%),
-          radial-gradient(ellipse at 85% 90%, #d4dcd7 0%, transparent 48%),
-          linear-gradient(145deg, #aebdc5, #e7ebeb 55%, #c9d4d5);
+          radial-gradient(ellipse at 18% 8%, var(--background-start) 0%, transparent 46%),
+          radial-gradient(ellipse at 85% 90%, var(--background-end) 0%, transparent 48%),
+          linear-gradient(145deg, var(--background-base), var(--background-mid) 55%, var(--background-finish));
       }
 
       main::before {
@@ -39,13 +48,30 @@
         inset: 0;
         pointer-events: none;
         opacity: 0;
-        background: radial-gradient(500px circle at var(--pointer-x, 50%) var(--pointer-y, 50%), rgb(255 255 255 / 55%), transparent 70%);
+        background: radial-gradient(500px circle at var(--pointer-x, 50%) var(--pointer-y, 50%), var(--pointer-glow), transparent 70%);
         transition: opacity 400ms ease;
       }
 
       main.is-following::before { opacity: 1; }
-      img { width: clamp(8rem, 22vw, 10rem); height: auto; filter: drop-shadow(0 16px 24px rgb(30 43 48 / 18%)); }
-      h1 { margin: 0; font-size: clamp(3rem, 10vw, 5rem); font-weight: 500; line-height: .9; letter-spacing: -.06em; text-shadow: 0 2px 20px rgb(255 255 255 / 30%); }
+      img { width: clamp(8rem, 22vw, 10rem); height: auto; filter: drop-shadow(0 16px 24px var(--logo-shadow)); }
+      h1 { margin: 0; font-size: clamp(3rem, 10vw, 5rem); font-weight: 500; line-height: .9; letter-spacing: -.06em; text-shadow: 0 2px 20px var(--heading-shadow); }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          color: #edf3f4;
+          background: #111a20;
+          --background-start: #253a45;
+          --background-end: #28352f;
+          --background-base: #111a20;
+          --background-mid: #1b2a33;
+          --background-finish: #172322;
+          --pointer-glow: rgb(174 219 235 / 18%);
+          --heading-shadow: rgb(174 219 235 / 14%);
+          --logo-shadow: rgb(0 0 0 / 45%);
+        }
+
+        img { filter: invert(1) drop-shadow(0 16px 24px var(--logo-shadow)); }
+      }
 
       @media (max-width: 480px) {
         main { flex-direction: column; }
